@@ -1,0 +1,62 @@
+@font-face {
+    font-family: strawMilky;
+    src: url(fonts/straw_milky.otf);
+}
+
+* {
+    font-family: strawMilky;
+}
+
+.wrapper {
+    display: flex;
+    height: 38rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.player {
+    border: 5px solid #de9cdb;
+    padding: 20px;
+    border-radius: 10%;
+    box-shadow: rgba(65, 5, 70, 0.3) 10px 10px 10px;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.track-art {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #d06fee;
+    border-radius: 50%;
+    box-shadow: rgba(65, 5, 70, 0.3) 10px 10px 10px;
+}
+
+.track-details {
+    align-items: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: larger;
+    color: rgba(115, 33, 115, 0.463);
+    text-shadow: rgba(65, 5, 70, 0.3) 0px 1px 1px;
+    padding: 2px;
+}
+
+.artist {
+    color: rgba(255, 121, 255, 0.463);
+    text-shadow: rgba(65, 5, 70, 0.3) 0px 1px 1px;
+    padding: 2px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(157, 214, 245);
+    padding: 5px;
+}
