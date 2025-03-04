@@ -32,11 +32,14 @@ function playPause() {
         song.pause();
         isPlaying = false;
         play.src = "images/play.png";
-    } else {
-        song.play();
-        isPlaying = true;
-        play.src = "images/pause.png";
-    }
+    } else playTrack()
+};
+
+function playTrack() {
+    song.play();
+    isPlaying = true;
+    play.src = "images/pause.png";
+
 }
 
 function loadTrack(index) {
@@ -49,6 +52,27 @@ function loadTrack(index) {
     artist.textContent = playlist[index].artist;
     updateTimer = setInterval(seekUpdate, 1000);
     song.addEventListener("ended", nextTrack);
+    playTrack();
+}
+
+function skipTrack() {
+    if (playlist.length > index) {
+        index += 1;
+
+    } else {
+        index = 0;
+    }
+    loadTrack(index);
+}
+
+function previousTrack() {
+    if (index > 0) {
+        index -= 1;
+
+    } else {
+        index = playlist.length;
+    }
+    loadTrack(index);
 }
 
 loadTrack(0);
