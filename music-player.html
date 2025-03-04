@@ -5,36 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A music player!</title>
+    <script src="musicPlayer.js" defer></script>
+
     <link rel="stylesheet" href="music-player.css">
+
     <link rel="icon" type="image/x-icon" href="/images/music-cat.ico">
 
 </head>
 
-<body>
-    <div class="wrapper">
-        <div class="player">
-            <div class="track-info">
-                <div class="track-details">
-                    <div class="title">This is the title</div>
-                    <div class="separator"> - </div>
-                    <div class="artist">This is the artist</div>
-                    <div class="timer">
-                        <div class="current-time">00:00</div>
-                        <div class="total-duration">00:00</div>
-                    </div>
-                    <div class="track-controllers">
-                        <img src="images/previous.png" class="previous" alt="previous track">
-                        <img src="images/play.png" class="play" alt="play track">
-                        <img src="images/next.png" class="next" alt="next track">
-                    </div>
+<div class="wrapper">
+    <div class="player">
+        <div class="track-info">
+            <div class="track-details">
+                <div class="title">This is the title</div>
+                <div class="separator"> - </div>
+                <div class="artist">This is the artist</div>
+                <input type="range" min="1" max="100" value="0" class="duration-bar-progress" onchange="changeProgress()">
+                <div class="timer">
+                    <div class="current-time">00:00</div>
+                    <div class="total-duration">00:00</div>
                 </div>
-                <div class="track-art">
-                    <div class="art"></div>
+                <div class="track-controllers">
+                    <img src="images/shuffle.png" class="shuffle" alt="shuffle track" onclick="shuffleTrack()">
+                    <img src="images/previous.png" class="previous" alt="previous track" onclick="previousTrack()">
+                    <img src="images/play.png" class="play" alt="play track" onclick="playPause()">
+                    <img src="images/next.png" class="next" alt="next track" onclick="skipTrack()">
                 </div>
-
             </div>
+            <img src="images/default_art.png" class="track-art">
+
+
         </div>
     </div>
+</div>
+<script src="musicPlayer.js"></script>
 </body>
 
 </html>
