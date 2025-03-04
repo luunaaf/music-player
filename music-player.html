@@ -5,36 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A music player!</title>
+    <script src="musicPlayer.js" defer></script>
+
     <link rel="stylesheet" href="music-player.css">
+
     <link rel="icon" type="image/x-icon" href="/images/music-cat.ico">
 
 </head>
 
-<body>
-    <div class="wrapper">
-        <div class="player">
-            <div class="track-info">
-                <div class="track-details">
-                    <div class="title">This is the title</div>
-                    <div class="separator"> - </div>
-                    <div class="artist">This is the artist</div>
-                    <div class="timer">
-                        <div class="current-time">00:00</div>
-                        <div class="total-duration">00:00</div>
-                    </div>
-                    <div class="track-controllers">
-                        <img src="images/previous.png" class="previous" alt="previous track">
-                        <img src="images/play.png" class="play" alt="play track">
-                        <img src="images/next.png" class="next" alt="next track">
-                    </div>
+<div class="wrapper">
+    <div class="player">
+        <div class="track-info">
+            <div class="track-details">
+                <div class="title">This is the title</div>
+                <div class="separator"> - </div>
+                <div class="artist">This is the artist</div>
+                <div class="timer">
+                    <div class="current-time">00:00</div>
+                    <div class="total-duration">00:00</div>
                 </div>
-                <div class="track-art">
-                    <div class="art"></div>
+                <div class="track-controllers">
+                    <img src="images/previous.png" class="previous" alt="previous track">
+                    <img src="images/play.png" class="play" alt="play track" onclick="playPause()">
+                    <img src="images/next.png" class="next" alt="next track">
                 </div>
-
             </div>
+            <div class="track-art">
+                <div class="art"></div>
+            </div>
+
         </div>
     </div>
+</div>
+<script src="mmusicPlayer.js"></script>
 </body>
 
 </html>
