@@ -17,10 +17,14 @@ let playlist = [
     { name: "LOTO", artist: "rusowsky", image: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/53/50/3d/53503d1d-fa48-f1e7-147b-b2783288131f/196922602917.jpg/600x600bf-60.jpg", path: "tracks/LOTO.mp3" },
     { name: "VOYCONTODO", artist: "Ralphie Choo", image: "https://images.genius.com/ec27746598f58c5bf3ccd239db864a75.1000x1000x1.png", path: "tracks/VOYCONTODO.mp3" },
     { name: "zarcillos de plata", artist: "Judeline", image: "https://cdn-images.dzcdn.net/images/cover/e045aacae62898d02e49c14f7cac81f8/0x1900-000000-80-0-0.jpg", path: "tracks/zarcillos de plata.mp3" },
+    { name: "CHIRI", artist: "ROSALÍA", image: "https://i.scdn.co/image/ab67616d0000b2730c179967a265de0fc76382fe", path: "tracks/CHIRI.mp3" },
+    { name: "COMO UN G", artist: "ROSALÍA", image: "https://i.scdn.co/image/ab67616d0000b2730c179967a265de0fc76382fe", path: "tracks/COMO UN G.mp3" },
+    { name: "INRI", artist: "Judeline", image: "https://cdn-images.dzcdn.net/images/cover/40c58ff9e5b40a87449f1e98690f2f1b/0x1900-000000-80-0-0.jpg", path: "tracks/INRI.mp3" },
+    { name: "Ni soy santo", artist: "Dellafuente", image: "https://www.mondosonoro.com/wp-content/uploads/2023/04/dellafuente-lagrimas-.jpg", path: "tracks/Ni soy santo.mp3" },
 ];
 
-
 let song = document.createElement('audio');
+
 
 function resetValues() {
     curr_time.textContent = "00:00";
@@ -52,7 +56,21 @@ function loadTrack(index) {
     title.textContent = playlist[index].name;
     artist.textContent = playlist[index].artist;
     updateTimer = setInterval(seekUpdate, 1000);
-    song.addEventListener("ended", nextTrack);
+    song.addEventListener("ended", skipTrack());
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function shuffleTrack() {
+    let newIndex = getRandomInt(playlist.length);
+    while (index === newIndex) {
+        newIndex = getRandomInt(playlist.length);
+    }
+    index = newIndex;
+    loadTrack(newIndex)
+
 }
 
 function skipTrack() {
