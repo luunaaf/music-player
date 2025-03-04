@@ -46,6 +46,20 @@ function playTrack() {
 
 }
 
+//we update the songs timer as it plays
+song.addEventListener("timeupdate", () => {
+    const minutes = Math.floor(song.currentTime / 60).toString().padStart(2, '0');;
+    const seconds = Math.floor(song.currentTime % 60).toString().padStart(2, '0');;
+    curr_time.textContent = minutes + ":" + seconds;
+});
+
+//after meta data is loaded, we display the song's duration
+song.addEventListener('loadedmetadata', () => {
+    const minutes = Math.floor(song.duration / 60).toString().padStart(2, '0');;
+    const seconds = Math.floor(song.duration % 60).toString().padStart(2, '0');;
+    total_duration.textContent = minutes + ":" + seconds;
+});
+
 function loadTrack(index) {
     clearInterval(updateTimer);
     resetValues();
@@ -59,12 +73,15 @@ function loadTrack(index) {
     song.addEventListener("ended", skipTrack());
 }
 
+//I generate a number between 0 and the playlist length
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
 function shuffleTrack() {
+    //new index will be a random number
     let newIndex = getRandomInt(playlist.length);
+    //if the new index is the same as te actual songs', i keep generating indexs
     while (index === newIndex) {
         newIndex = getRandomInt(playlist.length);
     }
@@ -72,6 +89,7 @@ function shuffleTrack() {
     loadTrack(newIndex)
 
 }
+
 
 function skipTrack() {
     if (playlist.length > index) {
