@@ -58,7 +58,6 @@ song.addEventListener("loadedmetadata", function() {
     total_duration.textContent = minutes + ":" + seconds;
     //we get the bars width
     actualBarWidth = bar.clientWidth;
-    console.log(actualBarWidth);
 });
 
 //we update the songs timer as it plays
@@ -67,10 +66,9 @@ song.addEventListener("timeupdate", () => {
     const seconds = Math.floor(song.currentTime % 60).toString().padStart(2, '0');;
     curr_time.textContent = minutes + ":" + seconds;
     if (songDuration > 0 && actualBarWidth > 0) {
-
+        //we make the progress bar change its width depending on the currentTime of the audio
         const currentDuration = song.currentTime;
         const newBarWidth = (currentDuration / songDuration) * actualBarWidth;
-        console.log(actualBarWidth);
         progressBar.style.width = newBarWidth + "px";
     };
 
