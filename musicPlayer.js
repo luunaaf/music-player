@@ -12,7 +12,6 @@ let total_duration = document.querySelector(".total-duration");
 
 let index = 0;
 let isPlaying = false;
-let updateTimer;
 
 let playlist = [
     { name: "LOTO", artist: "rusowsky", image: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/53/50/3d/53503d1d-fa48-f1e7-147b-b2783288131f/196922602917.jpg/600x600bf-60.jpg", path: "tracks/LOTO.mp3" },
@@ -51,8 +50,8 @@ function playTrack() {
 }
 
 //we make song change its current time according to the progress bar value
-function changeProgress(){
-    song.currentTime = progressBar.value * songDuration/100;
+function changeProgress() {
+    song.currentTime = progressBar.value * songDuration / 100;
 }
 
 //after meta data is loaded, we display the song's duration
@@ -73,13 +72,17 @@ song.addEventListener("timeupdate", () => {
         const currentDuration = song.currentTime;
         seekProgress = currentDuration * (100 / songDuration);
         progressBar.value = seekProgress;
+        //when the song ends, go to next track
+        if (songDuration == currentDuration) {
+            skipTrack();
+        }
     };
+
 
 
 });
 
 function loadTrack(index) {
-    clearInterval(updateTimer);
     resetValues();
     song.src = playlist[index].path;
     song.load();
@@ -87,10 +90,8 @@ function loadTrack(index) {
     art.src = playlist[index].image;
     title.textContent = playlist[index].name;
     artist.textContent = playlist[index].artist;
-    updateTimer = setInterval(seekUpdate, 1000);
-    
+
 }
-song.addEventListener("ended", skipTrack());
 
 //I generate a number between 0 and the playlist length
 function getRandomInt(max) {
