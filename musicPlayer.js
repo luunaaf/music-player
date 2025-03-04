@@ -6,7 +6,6 @@ let play = document.querySelector(".play");
 let next = document.querySelector(".next");
 let previous = document.querySelector(".previous");
 let progressBar = document.querySelector(".duration-bar-progress")
-let bar = document.querySelector(".duration-bar")
 
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
@@ -27,7 +26,8 @@ let playlist = [
 
 let song = document.createElement('audio');
 let songDuration = 0;
-let actualBarWidth = 0;
+let seekProgress = 0;
+
 
 
 function resetValues() {
@@ -50,14 +50,17 @@ function playTrack() {
 
 }
 
+//we make song change its current time according to the progress bar value
+function changeProgress(){
+    song.currentTime = progressBar.value * songDuration/100;
+}
+
 //after meta data is loaded, we display the song's duration
 song.addEventListener("loadedmetadata", function() {
     songDuration = song.duration;
     const minutes = Math.floor(songDuration / 60).toString().padStart(2, '0');;
     const seconds = Math.floor(songDuration % 60).toString().padStart(2, '0');;
     total_duration.textContent = minutes + ":" + seconds;
-    //we get the bars width
-    actualBarWidth = bar.clientWidth;
 });
 
 //we update the songs timer as it plays
@@ -65,11 +68,11 @@ song.addEventListener("timeupdate", () => {
     const minutes = Math.floor(song.currentTime / 60).toString().padStart(2, '0');;
     const seconds = Math.floor(song.currentTime % 60).toString().padStart(2, '0');;
     curr_time.textContent = minutes + ":" + seconds;
-    if (songDuration > 0 && actualBarWidth > 0) {
+    if (songDuration > 0) {
         //we make the progress bar change its width depending on the currentTime of the audio
         const currentDuration = song.currentTime;
-        const newBarWidth = (currentDuration / songDuration) * actualBarWidth;
-        progressBar.style.width = newBarWidth + "px";
+        seekProgress = currentDuration * (100 / songDuration);
+        progressBar.value = seekProgress;
     };
 
 
@@ -85,8 +88,9 @@ function loadTrack(index) {
     title.textContent = playlist[index].name;
     artist.textContent = playlist[index].artist;
     updateTimer = setInterval(seekUpdate, 1000);
-    song.addEventListener("ended", skipTrack());
+    
 }
+song.addEventListener("ended", skipTrack());
 
 //I generate a number between 0 and the playlist length
 function getRandomInt(max) {
@@ -107,7 +111,6 @@ function shuffleTrack() {
 
 
 function skipTrack() {
-    actualBarWidth = bar.clientWidth;
     if (playlist.length > index) {
         index += 1;
 

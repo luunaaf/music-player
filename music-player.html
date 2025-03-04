@@ -20,10 +20,7 @@
                 <div class="title">This is the title</div>
                 <div class="separator"> - </div>
                 <div class="artist">This is the artist</div>
-                <div>
-                    <div class="duration-bar"></div>
-                    <div class="duration-bar-progress"></div>
-                </div>
+                <input type="range" min="1" max="100" value="0" class="duration-bar-progress" onchange="changeProgress()">
                 <div class="timer">
                     <div class="current-time">00:00</div>
                     <div class="total-duration">00:00</div>
@@ -41,7 +38,7 @@
         </div>
     </div>
 </div>
-<script src="mmusicPlayer.js"></script>
+<script src="musicPlayer.js"></script>
 </body>
 
 </html>
