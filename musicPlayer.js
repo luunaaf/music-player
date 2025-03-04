@@ -5,7 +5,8 @@ let art = document.querySelector(".track-art");
 let play = document.querySelector(".play");
 let next = document.querySelector(".next");
 let previous = document.querySelector(".previous");
-let bar = document.querySelector(".duration-bar-progress")
+let progressBar = document.querySelector(".duration-bar-progress")
+let bar = document.querySelector(".duration-bar")
 
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
@@ -65,11 +66,12 @@ song.addEventListener("timeupdate", () => {
     const minutes = Math.floor(song.currentTime / 60).toString().padStart(2, '0');;
     const seconds = Math.floor(song.currentTime % 60).toString().padStart(2, '0');;
     curr_time.textContent = minutes + ":" + seconds;
-    if (songDuration > 0) {
+    if (songDuration > 0 && actualBarWidth > 0) {
+
         const currentDuration = song.currentTime;
         const newBarWidth = (currentDuration / songDuration) * actualBarWidth;
         console.log(actualBarWidth);
-        bar.style.width = newBarWidth + "px";
+        progressBar.style.width = newBarWidth + "px";
     };
 
 
@@ -107,6 +109,7 @@ function shuffleTrack() {
 
 
 function skipTrack() {
+    actualBarWidth = bar.clientWidth;
     if (playlist.length > index) {
         index += 1;
 
