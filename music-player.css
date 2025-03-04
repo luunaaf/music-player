@@ -7,6 +7,25 @@
     font-family: strawMilky;
 }
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: transparent;
+    -webkit-app-region: drag;
+}
+
+.controls,
+.play,
+.next,
+.previous {
+    -webkit-app-region: no-drag;
+}
+
 .wrapper {
     display: flex;
     height: 38rem;
