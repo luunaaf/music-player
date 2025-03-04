@@ -5,6 +5,7 @@ let art = document.querySelector(".track-art");
 let play = document.querySelector(".play");
 let next = document.querySelector(".next");
 let previous = document.querySelector(".previous");
+let bar = document.querySelector(".duration-bar-progress")
 
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
@@ -24,6 +25,8 @@ let playlist = [
 ];
 
 let song = document.createElement('audio');
+let songDuration = 0;
+let actualBarWidth = 0;
 
 
 function resetValues() {
@@ -46,18 +49,30 @@ function playTrack() {
 
 }
 
+//after meta data is loaded, we display the song's duration
+song.addEventListener("loadedmetadata", function() {
+    songDuration = song.duration;
+    const minutes = Math.floor(songDuration / 60).toString().padStart(2, '0');;
+    const seconds = Math.floor(songDuration % 60).toString().padStart(2, '0');;
+    total_duration.textContent = minutes + ":" + seconds;
+    //we get the bars width
+    actualBarWidth = bar.clientWidth;
+    console.log(actualBarWidth);
+});
+
 //we update the songs timer as it plays
 song.addEventListener("timeupdate", () => {
     const minutes = Math.floor(song.currentTime / 60).toString().padStart(2, '0');;
     const seconds = Math.floor(song.currentTime % 60).toString().padStart(2, '0');;
     curr_time.textContent = minutes + ":" + seconds;
-});
+    if (songDuration > 0) {
+        const currentDuration = song.currentTime;
+        const newBarWidth = (currentDuration / songDuration) * actualBarWidth;
+        console.log(actualBarWidth);
+        bar.style.width = newBarWidth + "px";
+    };
 
-//after meta data is loaded, we display the song's duration
-song.addEventListener('loadedmetadata', () => {
-    const minutes = Math.floor(song.duration / 60).toString().padStart(2, '0');;
-    const seconds = Math.floor(song.duration % 60).toString().padStart(2, '0');;
-    total_duration.textContent = minutes + ":" + seconds;
+
 });
 
 function loadTrack(index) {

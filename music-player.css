@@ -28,6 +28,22 @@
     flex-direction: row-reverse;
 }
 
+.duration-bar {
+    width: 200px;
+    height: 10px;
+    background-color: #d06fee;
+    border-radius: 10%;
+}
+
+.duration-bar-progress {
+    position: absolute;
+    top: 19.8rem;
+    width: 200px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 10%;
+}
+
 .track-art {
     width: 200px;
     height: 200px;
@@ -54,6 +70,12 @@
     color: rgb(247, 250, 197);
     text-shadow: rgba(65, 5, 70, 0.3) 0px 1px 1px;
     padding: 2px;
+}
+
+.timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .separator {
