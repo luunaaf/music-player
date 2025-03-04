@@ -22,8 +22,20 @@ body {
 .controls,
 .play,
 .next,
-.previous {
+.previous,
+.minimize,
+.close,
+.shuffle,
+.window-controls,
+.duration-bar-progress {
     -webkit-app-region: no-drag;
+    cursor: pointer;
+}
+
+.window-controls {
+    height: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .wrapper {
