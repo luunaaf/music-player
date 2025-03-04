@@ -1,6 +1,6 @@
 let title = document.querySelector(".title");
 let artist = document.querySelector(".artist");
-let art = document.querySelector(".art");
+let art = document.querySelector(".track-art");
 
 let play = document.querySelector(".play");
 let next = document.querySelector(".next");
@@ -28,14 +28,14 @@ function resetValues() {
 }
 
 function playPause() {
-    if (!isPlaying) {
+    if (isPlaying) {
         song.pause();
         isPlaying = false;
-        play.src = "images/pause.png";
+        play.src = "images/play.png";
     } else {
         song.play();
         isPlaying = true;
-        play.src = "images/play.png";
+        play.src = "images/pause.png";
     }
 }
 
@@ -44,8 +44,7 @@ function loadTrack(index) {
     resetValues();
     song.src = playlist[index].path;
     song.load();
-    art.style.backgroundImage =
-        "url(" + playlist[index].image + ")";
+    art.src = playlist[index].image;
     title.textContent = playlist[index].name;
     artist.textContent = playlist[index].artist;
     updateTimer = setInterval(seekUpdate, 1000);
