@@ -1,0 +1,23 @@
+{
+    "name": "music-player",
+    "version": "1.0.0",
+    "description": "First version of my music player!!",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/luunaaf/music-player.git"
+    },
+    "author": "Loubna Founoun ElAoud",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/luunaaf/music-player/issues"
+    },
+    "homepage": "https://github.com/luunaaf/music-player#readme",
+    "devDependencies": {
+        "electron": "^35.0.0"
+    }
+}
