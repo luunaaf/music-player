@@ -43,12 +43,14 @@
 
 .title {
     font-size: larger;
+    text-align: center;
     color: rgb(248, 244, 226);
     text-shadow: rgba(65, 5, 70, 0.3) 0px 1px 1px;
     padding: 2px;
 }
 
 .artist {
+    text-align: center;
     color: rgb(247, 250, 197);
     text-shadow: rgba(65, 5, 70, 0.3) 0px 1px 1px;
     padding: 2px;

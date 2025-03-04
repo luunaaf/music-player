@@ -47,12 +47,12 @@ function loadTrack(index) {
     resetValues();
     song.src = playlist[index].path;
     song.load();
+    playTrack();
     art.src = playlist[index].image;
     title.textContent = playlist[index].name;
     artist.textContent = playlist[index].artist;
     updateTimer = setInterval(seekUpdate, 1000);
     song.addEventListener("ended", nextTrack);
-    playTrack();
 }
 
 function skipTrack() {
