@@ -15,6 +15,13 @@
 
 <div class="wrapper">
     <div class="player">
+        <div class="volume-controls">
+            <img src="images/volume.png" class="volume" alt="volume">
+            <div class="volume-bar-container">
+                <input type="range" min="1" max="100" value="0" class="volume-bar" onchange="changeVolume()">
+            </div>
+            <img src="images/novolume.png" class="novolume" alt="no volume">
+        </div>
         <div class="track-info">
             <div class="window-controls">
                 <img src="images/minimize.png" class="minimize" alt="minimize">

@@ -6,6 +6,8 @@ let play = document.querySelector(".play");
 let next = document.querySelector(".next");
 let previous = document.querySelector(".previous");
 let progressBar = document.querySelector(".duration-bar-progress")
+let volumeBar = document.querySelector(".volume-bar");
+
 let close = document.querySelector(".close");
 let minimize = document.querySelector(".minimize");
 
@@ -63,6 +65,10 @@ function changeProgress() {
     song.currentTime = progressBar.value * songDuration / 100;
 }
 
+function changeVolume() {
+    song.volume = 1 - (volumeBar.value / 100);
+}
+
 //after meta data is loaded, we display the song's duration
 song.addEventListener("loadedmetadata", function() {
     songDuration = song.duration;
@@ -90,6 +96,8 @@ song.addEventListener("timeupdate", () => {
 
 
 });
+
+
 
 function loadTrack(index) {
     resetValues();
