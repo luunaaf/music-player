@@ -6,6 +6,8 @@ let play = document.querySelector(".play");
 let next = document.querySelector(".next");
 let previous = document.querySelector(".previous");
 let progressBar = document.querySelector(".duration-bar-progress")
+let close = document.querySelector(".close");
+let minimize = document.querySelector(".minimize");
 
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
@@ -27,6 +29,13 @@ let song = document.createElement('audio');
 let songDuration = 0;
 let seekProgress = 0;
 
+close.addEventListener("click", () => {
+    window.electronAPI.closeApp();
+});
+
+minimize.addEventListener("click", () => {
+    window.electronAPI.minimizeApp();
+});
 
 
 function resetValues() {
